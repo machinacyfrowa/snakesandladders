@@ -24,6 +24,10 @@
             ctx.lineTo(500, y);
             ctx.stroke();
         }
+        ctx.textAlign = "center";
+        for(var i = 1 ; i <= 10 ; i++) {
+            ctx.fillText(i, i*50 - 25, 25);
+        }
     </script>
 </body>
 </html>
