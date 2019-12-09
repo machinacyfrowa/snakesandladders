@@ -64,14 +64,17 @@
             }
             console.log("Gracz jest na polu: " + poleGracza);
             //rysowanie gracza
-            var x = ( poleGracza % 10 ) * 50 - 25;
+            
+            var x = (poleGracza % 10)  * 50 - 25;
+            if(x == -25) x = 475;
             var i = poleGracza;
             if(i >= 11 && i <= 20 || i >= 31 && i <= 40 ||
                 i >= 51 && i <= 60 || i >= 71 && i <= 80 ||
                   i >= 91 && i <= 100 )
                 x = 500 - x;
             console.log(x);
-            var y = 500 - ( Math.floor( poleGracza / 10 ) * 50 + 25 );
+            if(poleGracza % 10 == 0) var y = 500 - ( Math.floor( poleGracza / 10 ) * 50 - 25 );
+            else var y = 500 - ( Math.floor( poleGracza / 10 ) * 50 + 25 );
             console.log(y);
             ctx.fillRect(x - 10, y - 10, 20, 20);
         }
