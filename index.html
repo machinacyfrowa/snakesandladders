@@ -6,53 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body onload="rysujPlansze()">
     <canvas width="500" height="500" id="myCanvas" style="border: 2px solid black;"></canvas>
     <button onclick="rzucKostka()">rzuc kostka</button>
     <script>
         var c = document.getElementById('myCanvas');
         var ctx = c.getContext('2d');
-        ctx.strokeStyle = "#000000";
-        for(var x = 50 ; x <= 500 ; x += 50) {
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 500);
-            //ctx.stroke();
+        function rysujPlansze() {
+            ctx.strokeStyle = "#000000";
+            for(var x = 50 ; x <= 500 ; x += 50) {
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, 500);
+                //ctx.stroke();
+            }
+
+            for(var y = 50 ; y <= 500 ; y += 50) {
+                ctx.moveTo(0, y);
+                ctx.lineTo(500, y);
+                //ctx.stroke();
+            }
+            ctx.textAlign = "center";
+            var mnoznik = 0;
+            for(var i = 1 ; i <= 100; i++) {
+                if(i >= 11 && i <= 20 || i >= 31 && i <= 40 ||
+                    i >= 51 && i <= 60 || i >= 71 && i <= 80 ||
+                    i >= 91 && i <= 100 ) {
+                    var x = 500 - ( (i - mnoznik*5) * 50 - 25);
+                }
+                else var x = (i - mnoznik*5) * 50 - 25;
+                var y = 500 - ( 25 + mnoznik * 25 );
+                //console.log(x, y, mnoznik);
+                ctx.fillText(i, x, y);
+                if(i % 10 == 0) mnoznik += 2;
+            }
+            //ctx.strokeStyle = "#FF0000";
+            ctx.moveTo(375,175);
+            ctx.lineTo(75, 225);
+            ctx.stroke();
         }
 
-        for(var y = 50 ; y <= 500 ; y += 50) {
-            ctx.moveTo(0, y);
-            ctx.lineTo(500, y);
-            //ctx.stroke();
-        }
-        ctx.textAlign = "center";
-        /*for(var i = 1 ; i <= 10 ; i++) {
-            ctx.fillText(i, (i - 0*5) * 50 - 25, 25 + 0*25);
-        }
-        for(var i = 11 ; i <= 20 ; i++) {
-            ctx.fillText(i, (i - 2*5) *50 - 25, 25 + 2*25);
-        }
-        for(var i = 21 ; i <= 30 ; i++) {
-            ctx.fillText(i, (i - 4*5) *50 - 25, 25 + 4*25);
-        }*/
-        var mnoznik = 0;
-        for(var i = 1 ; i <= 100; i++) {
-            if(i >= 11 && i <= 20 || i >= 31 && i <= 40 ||
-                i >= 51 && i <= 60 || i >= 71 && i <= 80 ||
-                  i >= 91 && i <= 100 ) {
-                var x = 500 - ( (i - mnoznik*5) * 50 - 25);
-            }
-            else var x = (i - mnoznik*5) * 50 - 25;
-            var y = 500 - ( 25 + mnoznik * 25 );
-            //console.log(x, y, mnoznik);
-            ctx.fillText(i, x, y);
-            if(i % 10 == 0) mnoznik += 2;
-        }
-        //ctx.strokeStyle = "#FF0000";
-        ctx.moveTo(375,175);
-        ctx.lineTo(75, 225);
-        ctx.stroke();
         var poleGracza = 1;
         function rzucKostka() {
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0,0,500,500);
+            ctx.fillStyle = "#000000";
+            rysujPlansze();
             var rzut = Math.ceil(Math.random()*6);
             poleGracza += rzut;
             if(poleGracza == 100) {
