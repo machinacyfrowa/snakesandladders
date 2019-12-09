@@ -25,14 +25,22 @@
             ctx.stroke();
         }
         ctx.textAlign = "center";
-        for(var i = 1 ; i <= 10 ; i++) {
-            ctx.fillText(i, i*50 - 25, 25);
+        /*for(var i = 1 ; i <= 10 ; i++) {
+            ctx.fillText(i, (i - 0*5) * 50 - 25, 25 + 0*25);
         }
         for(var i = 11 ; i <= 20 ; i++) {
-            ctx.fillText(i, (i - 10) *50 - 25, 75);
+            ctx.fillText(i, (i - 2*5) *50 - 25, 25 + 2*25);
         }
         for(var i = 21 ; i <= 30 ; i++) {
-            ctx.fillText(i, (i - 20) *50 - 25, 125);
+            ctx.fillText(i, (i - 4*5) *50 - 25, 25 + 4*25);
+        }*/
+        for(var i = 1 ; i <= 100; i++) {
+            var mnoznik = 0;
+            var x = (i - mnoznik*5) * 50 - 25;
+            var y =  25 + mnoznik*25;
+            console.log(x, y);
+            ctx.fillText(i, x, y);
+            if(i % 10 == 0) mnoznik += 2;
         }
     </script>
 </body>
