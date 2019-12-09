@@ -34,11 +34,12 @@
         for(var i = 21 ; i <= 30 ; i++) {
             ctx.fillText(i, (i - 4*5) *50 - 25, 25 + 4*25);
         }*/
+        var mnoznik = 0;
         for(var i = 1 ; i <= 100; i++) {
-            var mnoznik = 0;
+            
             var x = (i - mnoznik*5) * 50 - 25;
             var y =  25 + mnoznik*25;
-            console.log(x, y);
+            console.log(x, y, mnoznik);
             ctx.fillText(i, x, y);
             if(i % 10 == 0) mnoznik += 2;
         }
