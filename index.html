@@ -44,7 +44,8 @@
             ctx.lineTo(75, 225);
             ctx.stroke();
         }
-
+        var snakes = { 66: 44, 18: 78}
+        
         var poleGracza = 1;
         function rzucKostka() {
             ctx.fillStyle = "#ffffff";
@@ -53,6 +54,12 @@
             rysujPlansze();
             var rzut = Math.ceil(Math.random()*6);
             poleGracza += rzut;
+            if(snakes[poleGracza] !== undefined) {
+                console.log("Waz/drabina na polu "+poleGracza+" przenosi cie na pole: "+snakes[poleGracza]);
+                poleGracza = snakes[poleGracza];
+                
+            }
+                
             if(poleGracza == 100) {
                 alert("Wygrałeś / wygrałaś");
             } else if(poleGracza > 100) {
